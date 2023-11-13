@@ -44,4 +44,4 @@ int main()
 	std::cout << "\nThat's it! You got it in " << tries << " guesses!\n";
 
 	return 0;
-} // Just testing I've setup Notepad++ as my text editor...
+}
