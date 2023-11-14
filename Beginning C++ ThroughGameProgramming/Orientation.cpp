@@ -1,8 +1,11 @@
 // Author: RoBert McGregor	ID: C00302210
-// Purpose: Launch menu for projects in this Repo
+// Purpose: Small, extendable text adventure
+// making use of code which has been taught in
+// class.
 // Start Time: 18:18	Finish Time:
-// Estimate: 20 mins	Actual:
+// Estimate: Who fuckin' knows.	Actual: Not me!
 // Problems & Bugs:
+// No validation for user input - a string will throw the system.
 
 #include <iostream>
 #include <string>
@@ -137,7 +140,6 @@ int talktoBaldGuy()
 
 		std::cout << "'Oh, hey,' he says, 'Sorry, I'm... still a bit lost, here. Huh. Bloody timetable.'\n\nHe hands you a battered tablet computer.\n\n'Hey, why don't you try to find more info about the timetable on Blackboard?'\n\n\n\tYou have the tablet! Now you can enter option 666 to use Blackboard!\n\n" << std::endl;
 		holdingTablet = true;
-		// std::cout << "> 0) Log onto Blackboard." << std::endl;
 		std::cout << "> 0) Stop talking to this weird dude." << std::endl << std::endl;
 		std::cin >> menuInput;
 		std::cout << std::endl;
