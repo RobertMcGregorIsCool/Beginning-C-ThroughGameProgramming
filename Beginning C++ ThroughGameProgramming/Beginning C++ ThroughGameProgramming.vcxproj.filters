@@ -21,7 +21,7 @@
     <ClCompile Include="Chap03_Counter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Adventure.cpp">
+    <ClCompile Include="Orientation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
