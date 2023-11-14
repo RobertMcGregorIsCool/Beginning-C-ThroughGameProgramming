@@ -15,7 +15,7 @@
 #include <cstdlib>
 #include <ctime> // "It's C time!" XD ... =(
 
-int main()
+int mainGuessMyNumber()
 {
 	srand(time(0)); // Seed random number generator. Bernadette uses 'srand(time(nullptr));'
 

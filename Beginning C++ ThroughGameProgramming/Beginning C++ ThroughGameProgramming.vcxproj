@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Chap03_Counter.cpp" />
     <ClCompile Include="GuessMyNumber.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
