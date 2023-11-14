@@ -34,13 +34,6 @@ int sayStuff(std::string dialogue)
 	return 0;
 }
 
-void death()
-{
-	system("CLS");
-	std::cout << "\n\n\n\n\n\n\n\n\n\tYou log onto Blackboard and instantly die. You have scored (" << rand() % 8 << ") out of a possible " << rand() %1000 + 1 << " points.\n\n\n\n\n\n\n\n\t\t\t\t\t\tTHE END.\n\n\n\n\n\n\n\n\n\n\n\n";
-	system("Pause");
-}
-
 int roomOutsideMainHall()
 {
 	bool inRoom = true;
@@ -167,4 +160,11 @@ int talktoBaldGuy()
 			break;
 		}
 	}
+}
+
+void death()
+{
+	system("CLS");
+	std::cout << "\n\n\n\n\n\n\n\n\n\tYou log onto Blackboard and instantly die. You have scored (" << rand() % 8 << ") out of a possible " << rand() % 1000 + 1 << " points.\n\n\n\n\n\n\n\n\t\t\t\t\t\tTHE END.\n\n\n\n\n\n\n\n\n\n\n\n";
+	system("Pause");
 }
