@@ -21,5 +21,8 @@
     <ClCompile Include="Chap03_Counter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Adventure.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

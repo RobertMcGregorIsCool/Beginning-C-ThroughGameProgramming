@@ -9,7 +9,7 @@
 
 #include <iostream>
 
-int main()
+int Chap03_Counter() // Change this to Main
 {
 	std::cout << "Counting forward:\n";
 	for (int i = 0; i < 10; ++i)
