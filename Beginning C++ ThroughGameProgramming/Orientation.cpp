@@ -7,10 +7,10 @@
 // Problems & Bugs:
 // No validation for user input - a string will throw the system.
 
-#include <iostream>
-#include <string>
-#include <ctime>
-#include <cstdlib>
+#include <iostream>	// Input output
+#include <string>	// Strings!
+#include <ctime>	// Computer clock, needed for random elements.
+#include <cstdlib>	// Bunch of... stuff. Includes random functions.
 
 int roomOutsideMainHall();
 int roomMainHall();
@@ -18,25 +18,44 @@ int talktoBaldGuy();
 int sayStuff(std::string dialogue);
 void death();
 
-bool holdingTablet = false;
+bool holdingTablet = false; // VERY rudimentary 'inventory'.
 
 int main()
 {
-	srand(time(0));
+	srand(time(0)); // Init random number generator.
 
 	std::cout << "\tOnly enter numbers, please! This program doesn't understand strings (yet, but sooon...!).\n\n" << std::endl;
-	roomOutsideMainHall();
+	roomOutsideMainHall(); // Run our first 'room'.
 	return 0;
 }
 
+/// <summary>
+/// This function is used for short descriptions and dialogue exchanges.
+/// </summary>
+/// <param name="dialogue">Pass in whatever you want printed to screen.</param>
+/// <returns></returns>
 int sayStuff(std::string dialogue)
 {
-	system("CLS");
-	std::cout << dialogue;
-	system("Pause");
+	system("CLS");			// Clears the console - so we have a fully-black screen.
+	std::cout << dialogue;	// Print the dialogue passed to this function.
+	system("Pause");		// Allow player to read text, then press button to end function and return to room/person while loop.
 	return 0;
 }
 
+/// <summary>
+/// Good demo of the 'room/encounter-function' pattern. Every function using 
+/// this pattern has a while loop that runs as long as the 'inRoom' bool 
+/// returns true. The while loop first prints a description of the room, then
+/// offers numbered options which the player can choose and input after the 
+/// menu is printed.
+/// 
+/// A Switch statement evaluates the player input and then runs next 
+/// 'room/encounter' function, or performs some other action (eg. 'Death').
+/// 
+/// Note - 'Death' is only triggered if the player knows and enters the code
+/// (666) AND the global boolean 'holding tablet' is set to true.
+/// </summary>
+/// <returns></returns>
 int roomOutsideMainHall()
 {
 	bool inRoom = true;
