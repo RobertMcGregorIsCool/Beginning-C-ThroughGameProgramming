@@ -22,7 +22,7 @@ bool holdingTablet = false; // VERY rudimentary 'inventory'.
 
 int main()
 {
-	srand(time(0)); // Init random number generator.
+	srand(time(0)); // Init random number generator - causing errors?
 
 	std::cout << "\tOnly enter numbers, please! This program doesn't understand strings (yet, but sooon...!).\n\n" << std::endl;
 	roomOutsideMainHall(); // Run our first 'room'.
@@ -58,13 +58,15 @@ int sayStuff(std::string dialogue)
 /// <returns></returns>
 int roomOutsideMainHall()
 {
-	bool inRoom = true;
+	bool inRoom = true; // Set true as we enter room/encounter, this is set false on choosing an option to leave (or take another action)
 
-	while (inRoom)
+	while (inRoom) // Effectively, each room has its own 'Game Loop', which repeats the menu until you leave (or take another action)
 	{
-		system("CLS");
+		system("CLS"); // Clear the console - leaves a black screen
 		int menuInput = 0;
 
+		// Using a lot of escape characters here in strings as they're more 
+		// convenient than always using <<std::endl; '\n' is a new line, '\t' is tab
 		std::cout << "You're standing outside some sliding doors leading to a large hall.\nIt's bucketing down out here, and you're getting wet. What would you like to do?\n" << std::endl;
 		std::cout << "> 0) Stay right here." << std::endl;
 		std::cout << "> 1) Go through the sliding doors." << std::endl << std::endl;
@@ -77,11 +79,11 @@ int roomOutsideMainHall()
 			sayStuff("You stand around for a bit. Nothing happens, except you get a bit wetter.\n\n");
 			break;
 		case 1:
-			inRoom = false;
+			inRoom = false; // We are now exiting this room's loop!
 			sayStuff("You shiver and head inside - surely it has to be warmer there...!\n\n");
-			roomMainHall();
+			roomMainHall(); // Call the next room function.
 			return 0;
-		case 666:
+		case 666:	// The devil. THE DEVIL!
 			if (holdingTablet)
 			{
 				death();
@@ -94,6 +96,11 @@ int roomOutsideMainHall()
 	}
 }
 
+/// <summary>
+/// Follows the same 'room/encounter pattern' described in the summary of 
+/// roomOutsideMainHall above.
+/// </summary>
+/// <returns></returns>
 int roomMainHall()
 {
 	bool inRoom = true;
@@ -148,6 +155,10 @@ int roomMainHall()
 	}
 }
 
+/// <summary>
+/// Same as the standard 'room/encounter pattern', but now you're talking to some dude!
+/// </summary>
+/// <returns></returns>
 int talktoBaldGuy()
 {
 	bool talking = true;
@@ -183,6 +194,9 @@ int talktoBaldGuy()
 	}
 }
 
+/// <summary>
+/// It comes to us all, eventually.
+/// </summary>
 void death()
 {
 	system("CLS");
