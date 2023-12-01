@@ -15,7 +15,7 @@
 #include <cstdlib>	// Bunch of... stuff. Includes random functions.
 
 int roomOutsideMainHall();
-int fightLeprechaun(int t_playerStamina = 5, int t_enemyStamina = 3, int t_upperLimit = 100, int t_chancesToAttack = 5);
+int fightLeprechaun(int t_playerStamina = 5, int t_enemyStamina = 3, int t_upperLimit = 50, int t_chancesToAttack = 5);
 int roomMainHall();
 int talktoBaldGuy();
 int sayStuff(std::string dialogue);
@@ -98,7 +98,7 @@ int roomOutsideMainHall()
 			roomMainHall();
 			return 0;
 		case 2:
-			inRoom = false;
+			inRoom = false; // https://en.wikipedia.org/wiki/Bataireacht
 			sayStuff("A short fairy in green clothes with a strange 'Irish' accent attacks you with a Shillelagh!\nYou grab a sturdy branch and try to remember your training in Bataireacht!\n\n");
 			fightLeprechaun();
 			return 0;
@@ -157,7 +157,7 @@ int fightLeprechaun(int t_playerStamina, int t_enemyStamina, int t_upperLimit, i
 					sayStuff ("You hit him too low! He dodges your attack, and screams 'Better to be quarreling than lonesome!'\n\n");
 					attemptsToAttack--;
 				}
-			} while (attackNumber != targetNumber || attemptsToAttack > 1);
+			} while (attackNumber != targetNumber && attemptsToAttack > 0);
 
 			if (attackNumber == targetNumber) // Player has struck the Leprechaun!
 			{
