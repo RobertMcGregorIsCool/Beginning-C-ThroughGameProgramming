@@ -19,7 +19,7 @@
 //{
 	int GuessMyNumber() // Change this to Main
 	{
-		srand(time(0)); // Seed random number generator. Bernadette uses 'srand(time(nullptr));'
+		srand(time(nullptr)); // Seed random number generator. Bernadette uses 'srand(time(nullptr));'
 
 		int theNumber = rand() % 100 + 1; // Random number between 1 and 100
 		int tries = 0, guess; // The comma seems to create an uninitialised integer variable? Basically, int tries = 0; int guess;

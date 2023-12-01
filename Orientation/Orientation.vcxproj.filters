@@ -15,10 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GuessMyNumber.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Chap03_Counter.cpp">
+    <ClCompile Include="..\Beginning C++ ThroughGameProgramming\Orientation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
