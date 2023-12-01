@@ -9,10 +9,10 @@
 // There seems to be an error in setting up the random function, look into that.
 // The rooms are having problems with not returning a value. Possibly need to turn these into VOID? Is there another way?
 
-#include <iostream>
-#include <string>
-#include <ctime>
-#include <cstdlib>
+#include <iostream>	// Input output
+#include <string>	// Strings!
+#include <ctime>	// Computer clock, needed for random elements.
+#include <cstdlib>	// Bunch of... stuff. Includes random functions.
 
 int roomOutsideMainHall();
 int fightLeprechaun(int t_playerStamina = 5, int t_enemyStamina = 3, int t_upperLimit = 100, int t_chancesToAttack = 5);
@@ -21,22 +21,27 @@ int talktoBaldGuy();
 int sayStuff(std::string dialogue);
 void death();
 
-bool holdingTablet = false;
+bool holdingTablet = false; // VERY rudimentary 'inventory'.
 
 int main()
 {
-	srand(time(0));
+	srand(time(0)); // Init random number generator - causing errors?
 
 	std::cout << "\tOnly enter numbers, please! This program doesn't understand strings (yet, but sooon...!).\n\n" << std::endl;
-	roomOutsideMainHall();
+	roomOutsideMainHall(); // Run our first 'room'.
 	return 0;
 }
 
+/// <summary>
+/// This function is used for short descriptions and dialogue exchanges.
+/// </summary>
+/// <param name="dialogue">Pass in whatever you want printed to screen.</param>
+/// <returns></returns>
 int sayStuff(std::string dialogue)
 {
-	system("CLS");
-	std::cout << dialogue;
-	system("Pause");
+	system("CLS");			// Clears the console - so we have a fully-black screen.
+	std::cout << dialogue;	// Print the dialogue passed to this function.
+	system("Pause");		// Allow player to read text, then press button to end function and return to room/person while loop.
 	return 0;
 }
 
@@ -49,15 +54,32 @@ int sayStaminaUpdate(int t_playerStamina, int t_enemyStamina)
 	return 0;
 }
 
+/// <summary>
+/// Good demo of the 'room/encounter-function' pattern. Every function using 
+/// this pattern has a while loop that runs as long as the 'inRoom' bool 
+/// returns true. The while loop first prints a description of the room, then
+/// offers numbered options which the player can choose and input after the 
+/// menu is printed.
+/// 
+/// A Switch statement evaluates the player input and then runs next 
+/// 'room/encounter' function, or performs some other action (eg. 'Death').
+/// 
+/// Note - 'Death' is only triggered if the player knows and enters the code
+/// (666) AND the global boolean 'holding tablet' is set to true.
+/// </summary>
+/// <returns></returns>
+
 int roomOutsideMainHall()
 {
-	bool inRoom = true;
+	bool inRoom = true; // Set true as we enter room/encounter, this is set false on choosing an option to leave (or take another action)
 
-	while (inRoom)
+	while (inRoom) // Effectively, each room has its own 'Game Loop', which repeats the menu until you leave (or take another action)
 	{
-		system("CLS");
+		system("CLS"); // Clear the console - leaves a black screen
 		int menuInput = 0;
 
+		// Using a lot of escape characters here in strings as they're more 
+		// convenient than always using <<std::endl; '\n' is a new line, '\t' is tab
 		std::cout << "You're standing outside some sliding doors leading to a large hall.\nIt's bucketing down out here, and you're getting wet. What would you like to do?\n" << std::endl;
 		std::cout << "> 0) Stay right here." << std::endl;
 		std::cout << "> 1) Go through the sliding doors." << std::endl << std::endl;
@@ -80,7 +102,7 @@ int roomOutsideMainHall()
 			sayStuff("A short fairy in green clothes with a strange 'Irish' accent attacks you with a Shillelagh!\nYou grab a sturdy branch and try to remember your training in Bataireacht!\n\n");
 			fightLeprechaun();
 			return 0;
-		case 666:
+		case 666:	// The devil. THE DEVIL!
 			if (holdingTablet)
 			{
 				death();
@@ -198,6 +220,11 @@ int fightLeprechaun(int t_playerStamina, int t_enemyStamina, int t_upperLimit, i
 	}
 }
 
+/// <summary>
+/// Follows the same 'room/encounter pattern' described in the summary of 
+/// roomOutsideMainHall above.
+/// </summary>
+/// <returns></returns>
 int roomMainHall()
 {
 	bool inRoom = true;
@@ -252,6 +279,10 @@ int roomMainHall()
 	}
 }
 
+/// <summary>
+/// Same as the standard 'room/encounter pattern', but now you're talking to some dude!
+/// </summary>
+/// <returns></returns>
 int talktoBaldGuy()
 {
 	bool talking = true;
@@ -287,6 +318,9 @@ int talktoBaldGuy()
 	}
 }
 
+/// <summary>
+/// It comes to us all, eventually.
+/// </summary>
 void death()
 {
 	system("CLS");
